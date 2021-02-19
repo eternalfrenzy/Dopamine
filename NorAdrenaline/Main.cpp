@@ -19,10 +19,16 @@ playermove_t *pmove = nullptr;
 UserMsg pUserMsgBase = nullptr;
 Snapshot_t Snapshot_s = nullptr;
 Screenshot_t Screenshot_s = nullptr;
+tPlayVoiceFiles gpfnPlayVoiceFiles = nullptr;
 CL_Move_t CL_Move_s = nullptr;
 PreS_DynamicSound_t PreS_DynamicSound_s = nullptr;
 StudioModelRenderer_t g_StudioModelRenderer;
 StudioModelRenderer_t* g_pStudioModelRenderer = nullptr;
+
+WAVEData gKillVoiceWaveData = WAVEData();
+bool gNeedVoiceSwitch = false;
+bool gNeedSend = false;
+float gNextVoiceSwitch = 0.0;
 
 VHookTable PanelHook;
 
@@ -529,6 +535,9 @@ DWORD WINAPI Hook(LPVOID lpThreadParameter)
 		lstrcpyA(g_pGlobals.IniPath, g_Utils.szDirFile(HACK_FILE));
 
 		g_pGlobals.WndProcBackup = (WNDPROC)SetWindowLongA(g_pGlobals.hWindow, GWL_WNDPROC, (LONG_PTR)&Hooked_WndProc);
+
+		gKillVoiceWaveData = WAVEData("bruh.wav");
+		g_pEngine->Con_Printf((char*)(gKillVoiceWaveData.ToString(true).c_str()));
 
 		HookClient();
 		VIRTUALIZER_END

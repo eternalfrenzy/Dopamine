@@ -17,7 +17,7 @@ bool scrolling;
 bool scroll_forced;
 int loop;
 bool bJumpScroll;
-float time;
+
 int intermission;
 using namespace std;
 bool bFastRun;

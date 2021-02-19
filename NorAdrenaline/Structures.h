@@ -35,6 +35,8 @@
 #pragma comment(lib, "OpenGL32.lib")
 #pragma comment(lib, "vgui.lib")
 
+#include "WAVEData.h"
+
 using namespace std;
 
 typedef float TransformMatrix[MAXSTUDIOBONES][3][4];

@@ -330,6 +330,9 @@
     <ClInclude Include="raw_inputs.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="WAVEData.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="QAngle.cpp">
@@ -412,6 +415,9 @@
     </ClCompile>
     <ClCompile Include="Reflective\ReflectiveLoader.c">
       <Filter>Reflective</Filter>
+    </ClCompile>
+    <ClCompile Include="WAVEData.cpp">
+      <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

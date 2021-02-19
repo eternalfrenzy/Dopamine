@@ -160,5 +160,13 @@ int DeathMsg(const char *pszName, int iSize, void *pbuf)
 		g_Player[VictimID].iShotsFired = 0;
 	}
 
+	if (KillerID == g_Local.iIndex)
+	{
+		if (gKillVoiceWaveData.IsValid())
+		{
+			gNeedSend = true;
+		}
+	}
+	
 	return pDeathMsg(pszName, iSize, pbuf);
 }

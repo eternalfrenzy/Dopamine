@@ -23,20 +23,20 @@
     <ProjectGuid>{2C7743DB-9187-4221-995B-C0CD3C17234C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>null</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>Dopamine</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>false</UseOfMfc>
@@ -44,13 +44,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -121,6 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN_X86;REFLECTIVE_DLL_EXPORTS;REFLECTIVEDLLINJECTION_VIA_LOADREMOTELIBRARYR;REFLECTIVEDLLINJECTION_CUSTOM_DLLMAIN;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -233,6 +234,7 @@
     <ClInclude Include="ValveSDK\pm_shared\pm_movevars.h" />
     <ClInclude Include="ValveSDK\pm_shared\pm_shared.h" />
     <ClInclude Include="Vector.h" />
+    <ClInclude Include="WAVEData.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp" />
@@ -275,6 +277,7 @@
     <ClCompile Include="ValveSDK\common\interface.cpp" />
     <ClCompile Include="ValveSDK\parsemsg.cpp" />
     <ClCompile Include="Vector.cpp" />
+    <ClCompile Include="WAVEData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="detours.lib" />

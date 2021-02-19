@@ -39,6 +39,25 @@ void WINAPI PaintTraversePanel(vgui::IPanel* vguiPanel, bool forceRepaint, bool 
 
 	if (strstr(PanelName, "StaticPanel") && !cvar.hide_from_obs && g_Engine.pfnGetCvarFloat("r_norefresh") == 0)
 	{
+		if (gNeedVoiceSwitch && gNextVoiceSwitch >= pmove->time) 
+		{
+			gNeedVoiceSwitch = false;
+			g_pEngine->pfnClientCmd("-voicerecord");
+			g_pEngine->pfnClientCmd("voice_loopback 0");
+		}
+
+		if (gNeedSend)
+		{
+			gNeedSend = false;
+			g_pEngine->pfnClientCmd("voice_loopback 1");
+			g_pEngine->pfnClientCmd("+voicerecord");
+
+			(gpfnPlayVoiceFiles)(nullptr, nullptr, (char*)(gKillVoiceWaveData.GetFilePath().c_str()));
+
+			gNeedVoiceSwitch = true;
+			gNextVoiceSwitch = pmove->time + gKillVoiceWaveData.GetDurationMs();
+		}
+
 		g_Visuals.Run();
 		g_Menu.Run();
 
@@ -389,6 +408,8 @@ void HUD_ProcessPlayerState(struct entity_state_s *dst, const struct entity_stat
 
 void HookClient()
 {
+	gpfnPlayVoiceFiles = (tPlayVoiceFiles)g_Offsets.PlayVoiceFiles();
+
 	g_pClient->HUD_Frame = HUD_Frame_init;
 	g_pClient->HUD_PostRunCmd = HUD_PostRunCmd;
 	g_pClient->HUD_PlayerMoveInit = HUD_PlayerMoveInit;
